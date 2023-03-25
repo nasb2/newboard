@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.board.domain.BoardDto;
@@ -22,19 +23,17 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-	
+	@ResponseBody
 	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
-	public ModelAndView delete(@RequestParam Map<String, Object> map, Integer bno) throws Exception {
+	public String delete(@RequestParam Map<String, Object> map, Integer bno) throws Exception {
 //		System.out.println("map="+map);
 		
 		String writer = (String) map.get("writer");
-		
-		ModelAndView modelAndView = new ModelAndView("jsonView");
-		modelAndView.addObject("result", "success");
+		/* modelAndView.addObject("result", "success"); */
 		
 		boardService.delete(bno, writer);
-			
-		return modelAndView;
+		
+		return "success";
 	}
 	
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)

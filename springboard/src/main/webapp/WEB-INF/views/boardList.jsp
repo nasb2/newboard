@@ -29,10 +29,13 @@
 	    <a class="nav-link" href="/list.do">게시판</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/join.go">회원가입</a>
+	    <a class="nav-link" href="/login.go">${isLogined? '로그아웃' : '로그인'}</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/login.go">${isLogined? '로그아웃' : '로그인'}</a>
+	    <a class="nav-link" href="/join.go">${isLogined? '' : '회원가입'}</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link">${sessionScope.id}${isLogined?'님':''}</a>
 	  </li>
 	</ul>
 </nav>
@@ -97,7 +100,7 @@
             });
     		
     		$("#writeBtn").click(function () {
-    			if(${cookie.id.value eq null}) {
+    			if(${sessionScope.id eq null}) {
         			alert("로그인 해주세요.");
         			location.href = "/login.go";
         			return;

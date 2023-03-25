@@ -29,13 +29,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public ModelAndView join(UserDto userDto) throws Exception {
+	public ModelAndView join(UserDto userDto, HttpServletRequest request) throws Exception {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		userService.insert(userDto);
 		modelAndView.setViewName("jsonView");
 		modelAndView.addObject("result", "success");
-	
 		
 		return modelAndView;
 	}
@@ -44,12 +43,7 @@ public class UserController {
 	public String loginForm(HttpSession session, HttpServletResponse response) {
 		if (session.getAttribute("id") != null) {
             session.invalidate();
-           
-            response.addCookie(new Cookie("id", null){{
-	            setMaxAge(0);
-	        }});
         }
-		
 		return "login";
 	}
 	
@@ -72,14 +66,9 @@ public class UserController {
 				return "LOGIN_FAILED";
 			}
 			
+			String id = userService.select(paramId).getId();
 			HttpSession session = request.getSession();
-			session.setAttribute("id", userService.select(paramId).getId());
-			session.setAttribute("name", userService.select(paramId).getName());
-			
-			response.addCookie(new Cookie("id", userService.select(paramId).getId()){{
-	            setMaxAge(60); // 쿠키 유효기한 1일
-	        }});
-			
+			session.setAttribute("id", id);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

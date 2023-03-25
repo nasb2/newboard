@@ -22,10 +22,13 @@
 	    <a class="nav-link" href="/list.do">게시판</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/join.go">회원가입</a>
+	    <a class="nav-link" href="/login.go">${isLogined? '로그아웃' : '로그인'}</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/login.go">${isLogined? '로그아웃' : '로그인'}</a>
+	    <a class="nav-link" href="/join.go">${isLogined? '' : '회원가입'}</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link">${sessionScope.id}${isLogined?'님':''}</a>
 	  </li>
 	</ul>
 </nav>
@@ -51,6 +54,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
  
  	<script>
+	 	$("#joinBtn").on("click", function() {
+			location.href = "/join.go";
+		})
+	 	
  		$("#loginBtn").on("click", function() {
  			
  			// 입력란 널체크
@@ -85,7 +92,7 @@
  						alert("아이디 또는 패스워드를 확인해주세요.");
  					}
  					if(data == "LOGIN_SUCCESS") {
- 						alert("로그인 성공");
+ 						//alert("로그인 성공");
  						location.href = "/list.do";
  					}
  		
