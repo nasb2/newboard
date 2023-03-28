@@ -9,4 +9,4 @@ http://springportfolio.shop/
 - DB연동은 MyBatis를 사용
 - 원격 서버에 배포 및 AWS로 도메인 등록 (가비아에서 구입 후 AWS Route53에서 호스팅 영역 설정 완료)
 - Context Path 변경
-- 8080포트를 80포트로 변경(방화벽 고급 설정 적용)
+- Tomcat 8080포트를 80포트로 변경(방화벽 고급 설정 적용)
