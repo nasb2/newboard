@@ -98,6 +98,18 @@ public class BoardController {
 		
 		list = boardService.selectPage((page - 1) * pageSize, pageSize);
 		
+        // 제목, 내용 글자 수 넘치면 뒤에 '.....' 붙이기
+        for (BoardDto boardDto : list) {
+            String title = boardDto.getTitle();
+            if (15 < title.length()) {
+                boardDto.setTitle(title.substring(0, 10) + ".....");
+            }
+            String content = boardDto.getContent();
+            if (25 < content.length()) {
+                boardDto.setContent(content.substring(0, 25) + ".....");
+            }
+        }
+		
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("ph", ph);
 		modelAndView.setViewName("boardList");

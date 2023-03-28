@@ -94,13 +94,12 @@
             dataType: "json",
             success: function (data) {
             	if(data.result == 'success') {
-            		alert("성공");
+            		location.href = "/list.do";
             	}
-            	
-            	location.href = "/list.do";
+            
             },
             error: function (data) {
-                alert(data.result);
+                alert("죄송합니다. 회원가입에 실패했습니다.");
             }
         }); // $.ajax()
 		

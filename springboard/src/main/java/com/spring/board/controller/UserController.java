@@ -41,6 +41,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/login.go", method = RequestMethod.GET)
 	public String loginForm(HttpSession session, HttpServletResponse response) {
+		
+		// 로그아웃
 		if (session.getAttribute("id") != null) {
             session.invalidate();
         }
