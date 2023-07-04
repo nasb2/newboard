@@ -1,5 +1,5 @@
 ## 프로젝트URL   
-~~http://springportfolio.shop/   
+~~http://springportfolio.shop/~~   
 
 현재 AWS 비용 문제로 서버 내린 상태
 
