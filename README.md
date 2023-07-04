@@ -1,5 +1,7 @@
 ## 프로젝트URL   
-http://springportfolio.shop/   
+~~http://springportfolio.shop/   
+
+현재 AWS 비용 문제로 서버 내린 상태
 
 ## 프로젝트 요구사항   
 - 로그인과 회원가입 기능, CRUD를 포함한 게시판 사이트 제작
